@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acland Group — Licensed Plumbing &amp; Electrical | Western Sydney</title>
+<!--
+  ============================================================================
+  ACLAND GROUP — landing page  (DRAFT v2 · NiuWay good-faith build · 2026-06-10)
+  Single self-contained file. Open in a browser. Print to PDF for a flat preview.
+
+  REAL details already wired in:
+      Phone   1300 224 225   (click-to-call everywhere)
+      Email   info@aclandgroup.com.au
+      Address 432 Rooty Hill North Rd, Oakhurst NSW 2761
+      Brand   teal/cyan-blue (#2E9BC4) · white surfaces · black wordmark
+      Tagline "Tradies making a difference."
+
+  >>> REMAINING TO-DO before go-live:
+      Hero photo   — confirm with Bryce the pictured tech is current / OK to feature publicly
+      More photos  — when Bryce supplies job photos, restore a photo grid in the #work section
+      Form         — wire <form> action to a real handler (e.g. Formspree) to receive enquiries
+      Availability — confirm "same-day callbacks" wording
+      [ABN]        — not on the public record; left OUT (licence no. shown instead). Add if wanted.
+
+  >>> VERIFIED & WIRED IN (from NSW Fair Trading record + supplied assets):
+      Logo         — "acland-logo.png" (real mark) in nav + footer (recoloured white via CSS filter)
+      Licence      — single NSW Contractor Licence 188519C, current to Oct 2026 (covers plumbing + electrical)
+      Established  — 2006 CONFIRMED (company + director licence start Oct 2006) — now stated as fact
+      Reviews      — 3 genuine Facebook reviews (Sandy Thompson, David Horan, Jess Vujcich), shown undated
+      Rating strip — intentionally removed until fresh reviews are gathered
+
+  >>> CLAIMS DELIBERATELY NOT FEATURED:
+      · "NSW Government registered supplier" — public profile reads commercial/industrial; left OUT.
+      · Air-conditioning — they hold the licence class but no longer offer it; kept OFF the page.
+  ============================================================================
+-->
+<style>
+  :root{
+    /* ---- Acland teal system ---- */
+    --teal:#2E9BC4;          /* primary brand */
+    --teal-bright:#42B2DC;   /* hover / highlight */
+    --teal-dark:#1F7CA0;     /* pressed / deep accent */
+    --teal-deep:#0E2A33;     /* dark surface (teal-tinted near-black) */
+    --teal-deep-2:#143A46;   /* lifted dark surface */
+    --teal-deep-3:#1C4C5A;
+
+    --ink:#0F1A1F;           /* primary text */
+    --ink-soft:#33454C;
+    --paper:#FFFFFF;         /* main light surface */
+    --paper-2:#F4F8FA;       /* subtle teal-tinted lift */
+    --paper-3:#E7F0F4;       /* chips / soft tint */
+    --line:#E2E8EB;
+    --line-dark:#234049;
+    --slate:#5C6B70;
+    --slate-light:#9fb0b5;
+    --star:#F2B705;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif;
+    color:var(--ink);background:var(--paper);line-height:1.55;-webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 28px;}
+
+  /* ---------- LOGO MARK (real asset: acland-logo.png) ---------- */
+  .logo-img{height:46px;width:auto;flex:none;display:block;}
+  .logo-img.on-dark{filter:brightness(0) invert(1);}  /* teal mark → white on dark footer */
+
+  /* ---------- NAV ---------- */
+  nav{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.92);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:72px;}
+  .logo{display:flex;align-items:center;gap:12px;color:var(--ink);}
+  .logo .txt{font-weight:800;font-size:20px;letter-spacing:-.5px;line-height:1;}
+  .logo .txt small{display:block;font-size:9.5px;font-weight:700;letter-spacing:2px;
+    color:var(--teal);text-transform:uppercase;margin-top:4px;}
+  .nav-links{display:flex;align-items:center;gap:28px;}
+  .nav-links a{color:var(--ink-soft);font-size:14px;font-weight:600;transition:color .15s;}
+  .nav-links a:hover{color:var(--teal-dark);}
+  .nav-call{display:flex;align-items:center;gap:9px;background:var(--teal);color:#fff!important;
+    font-weight:800;font-size:14.5px;padding:11px 18px;border-radius:9px;
+    transition:background .15s,transform .12s;}
+  .nav-call:hover{background:var(--teal-dark);transform:translateY(-1px);}
+  .nav-call svg{width:17px;height:17px;stroke:#fff;}
+  @media(max-width:860px){.nav-links a:not(.nav-call){display:none;}}
+  @media(max-width:420px){.nav-call .lbl{display:none;}}
+
+  /* ---------- HERO ---------- */
+  .hero{background:var(--paper);padding:74px 0 84px;border-bottom:1px solid var(--line);}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center;}
+  @media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:38px;}}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:800;
+    letter-spacing:2px;text-transform:uppercase;color:var(--teal-dark);margin-bottom:20px;}
+  .eyebrow:before{content:"";width:24px;height:2px;background:var(--teal);}
+  .hero h1{font-size:clamp(36px,5.4vw,56px);line-height:1.05;letter-spacing:-1.5px;font-weight:800;max-width:14ch;}
+  .hero h1 em{font-style:normal;color:var(--teal);}
+  .hero p.lede{margin-top:22px;font-size:clamp(16px,2vw,18.5px);color:var(--ink-soft);max-width:54ch;}
+  .hero-cta{display:flex;gap:13px;margin-top:32px;flex-wrap:wrap;}
+  .btn{display:inline-flex;align-items:center;gap:9px;font-weight:800;font-size:15px;
+    padding:15px 26px;border-radius:10px;transition:transform .12s,background .15s,border-color .15s,color .15s;}
+  .btn svg{width:18px;height:18px;}
+  .btn-primary{background:var(--teal);color:#fff;}
+  .btn-primary:hover{background:var(--teal-dark);transform:translateY(-2px);}
+  .btn-primary svg{stroke:#fff;}
+  .btn-outline{border:1.5px solid var(--line-dark);color:var(--ink);}
+  .btn-outline:hover{border-color:var(--teal);color:var(--teal-dark);}
+  .btn-outline svg{stroke:currentColor;}
+  /* availability badge */
+  .avail{display:inline-flex;align-items:center;gap:10px;margin-top:30px;background:var(--paper-2);
+    border:1px solid var(--line);border-radius:30px;padding:9px 16px 9px 12px;font-size:13.5px;
+    font-weight:700;color:var(--ink-soft);}
+  .avail .dot{width:9px;height:9px;border-radius:50%;background:#27c06b;position:relative;flex:none;}
+  .avail .dot:after{content:"";position:absolute;inset:-5px;border-radius:50%;
+    background:rgba(39,192,107,.28);animation:pulse 2s infinite;}
+  @keyframes pulse{0%{transform:scale(.6);opacity:.9}100%{transform:scale(1.5);opacity:0}}
+  .avail b{color:var(--teal-dark);}
+
+  /* hero photo slot */
+  .hero-photo{position:relative;aspect-ratio:4/3.4;border-radius:20px;overflow:hidden;
+    background:linear-gradient(150deg,var(--teal-deep),var(--teal-deep-3));
+    border:1px solid var(--line);box-shadow:0 24px 60px rgba(15,26,31,.16);}
+  .hero-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+  .photo-note{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;
+    justify-content:center;text-align:center;color:#cfe7f0;padding:24px;gap:10px;}
+  .photo-note svg{width:40px;height:40px;stroke:var(--teal-bright);opacity:.9;}
+  .photo-note b{font-size:14px;font-weight:700;color:#eaf6fb;}
+  .photo-note span{font-size:12.5px;color:#9cc4d2;max-width:30ch;line-height:1.5;}
+  .hero-photo .float-badge{position:absolute;left:18px;bottom:18px;z-index:3;background:#fff;
+    border-radius:13px;padding:13px 16px;box-shadow:0 10px 30px rgba(15,26,31,.22);
+    display:flex;align-items:center;gap:12px;}
+  .hero-photo .float-badge .fb-ic{width:38px;height:38px;border-radius:9px;background:var(--paper-3);
+    display:flex;align-items:center;justify-content:center;flex:none;}
+  .hero-photo .float-badge .fb-ic svg{width:20px;height:20px;stroke:var(--teal-dark);}
+  .hero-photo .float-badge b{font-size:14px;display:block;letter-spacing:-.2px;}
+  .hero-photo .float-badge span{font-size:11.5px;color:var(--slate);}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:84px 0;}
+  .sec-head{max-width:62ch;margin-bottom:46px;}
+  .kicker{font-size:12.5px;font-weight:800;letter-spacing:2.4px;text-transform:uppercase;color:var(--teal);}
+  .sec-head h2{font-size:clamp(28px,4vw,40px);letter-spacing:-1px;margin-top:13px;line-height:1.1;font-weight:800;}
+  .sec-head p{margin-top:15px;color:var(--ink-soft);font-size:16.5px;}
+
+  /* ---------- SERVICES ---------- */
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+  @media(max-width:780px){.grid-2{grid-template-columns:1fr;}}
+  .svc{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:32px 30px;
+    transition:transform .15s,box-shadow .2s,border-color .15s;}
+  .svc:hover{transform:translateY(-3px);box-shadow:0 18px 46px rgba(15,26,31,.09);border-color:#bfdbe6;}
+  .svc .ic{width:54px;height:54px;border-radius:13px;background:var(--paper-3);
+    display:flex;align-items:center;justify-content:center;margin-bottom:20px;}
+  .svc .ic svg{width:27px;height:27px;stroke:var(--teal-dark);}
+  .svc h3{font-size:21px;letter-spacing:-.4px;font-weight:800;}
+  .svc p{margin-top:10px;color:var(--ink-soft);font-size:15px;}
+  .svc ul{list-style:none;margin-top:16px;display:flex;flex-wrap:wrap;gap:8px;}
+  .svc ul li{font-size:12.5px;font-weight:700;color:var(--teal-dark);background:var(--paper-3);
+    border-radius:20px;padding:6px 13px;}
+
+  /* ---------- WHY (dark teal band) ---------- */
+  .band{background:var(--teal-deep);color:#fff;}
+  .band .sec-head h2{color:#fff;}
+  .band .sec-head p{color:#a9c6d1;}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  @media(max-width:820px){.grid-3{grid-template-columns:1fr;}}
+  .why{padding:30px 28px;border:1px solid var(--line-dark);border-radius:16px;
+    background:linear-gradient(180deg,var(--teal-deep-2),var(--teal-deep));}
+  .why .n{font-size:13px;font-weight:800;color:var(--teal-bright);letter-spacing:1px;}
+  .why h4{font-size:19px;margin-top:13px;font-weight:800;letter-spacing:-.3px;}
+  .why p{margin-top:10px;color:#a9c6d1;font-size:14.5px;}
+
+  /* ---------- WORK / FACEBOOK CTA ---------- */
+  .work-cta{background:var(--paper-2);border:1px solid var(--line);border-radius:18px;
+    padding:36px 32px;display:flex;flex-direction:column;align-items:center;gap:24px;text-align:center;}
+  .work-chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;}
+  .work-chips span{font-size:13px;font-weight:700;color:var(--teal-dark);background:var(--paper-3);
+    border-radius:22px;padding:9px 16px;}
+
+  /* ---------- PROJECT GALLERY (retained for when more photos arrive) ---------- */
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  @media(max-width:900px){.gallery{grid-template-columns:1fr 1fr;}}
+  @media(max-width:520px){.gallery{grid-template-columns:1fr;}}
+  .shot{border-radius:15px;overflow:hidden;border:1px solid var(--line);background:var(--paper-2);}
+  .shot .photo-slot{position:relative;aspect-ratio:4/3;background:linear-gradient(150deg,#e9f2f6,#d6e7ee);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+    gap:8px;padding:18px;}
+  .shot .photo-slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .shot .photo-slot svg{width:30px;height:30px;stroke:var(--teal);opacity:.8;}
+  .shot .photo-slot span{font-size:11.5px;color:var(--teal-dark);font-weight:700;line-height:1.4;max-width:24ch;}
+  .shot .cap{padding:14px 16px;}
+  .shot .cap b{font-size:14.5px;letter-spacing:-.2px;display:block;}
+  .shot .cap em{font-style:normal;font-size:12.5px;color:var(--slate);}
+
+  /* ---------- REVIEW STRIP ---------- */
+  .reviews-strip{margin-top:42px;background:var(--paper-2);border:1px solid var(--line);
+    border-radius:16px;padding:22px 28px;display:flex;align-items:center;justify-content:center;
+    gap:16px;flex-wrap:wrap;text-align:center;}
+  .stars{display:inline-flex;gap:3px;}
+  .stars svg{width:22px;height:22px;fill:var(--star);}
+  .reviews-strip .rtxt{font-size:15px;font-weight:700;color:var(--ink);}
+  .reviews-strip .rtxt b{color:var(--teal-dark);}
+  .reviews-strip .rtxt span{color:var(--slate);font-weight:600;}
+
+  /* ---------- TESTIMONIALS ---------- */
+  .tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  @media(max-width:860px){.tgrid{grid-template-columns:1fr;}}
+  .tcard{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:28px 26px;
+    display:flex;flex-direction:column;}
+  .tcard .qmark{font-size:46px;line-height:.6;color:var(--teal);font-weight:800;height:24px;}
+  .tcard p{margin-top:14px;font-size:15.5px;color:var(--ink-soft);font-style:italic;flex:1;}
+  .tcard .who{margin-top:20px;display:flex;align-items:center;gap:12px;}
+  .tcard .av{width:42px;height:42px;border-radius:50%;background:var(--paper-3);flex:none;
+    display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--teal-dark);font-size:15px;}
+  .tcard .who b{display:block;font-size:14.5px;}
+  .tcard .who span{font-size:12.5px;color:var(--slate);}
+  .slot-flag{display:inline-block;margin-top:6px;font-size:10.5px;font-weight:800;letter-spacing:.5px;
+    color:#b06a00;background:#fff4dd;border:1px solid #f3dca0;border-radius:5px;padding:2px 7px;}
+
+  /* ---------- SECTORS ---------- */
+  .sectors{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  @media(max-width:820px){.sectors{grid-template-columns:1fr 1fr;}}
+  .sector{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:24px 22px;
+    transition:border-color .15s;}
+  .sector:hover{border-color:var(--teal);}
+  .sector .s-ic{width:30px;height:30px;stroke:var(--teal-dark);margin-bottom:13px;}
+  .sector b{display:block;font-size:16px;letter-spacing:-.3px;}
+  .sector span{display:block;font-size:13.5px;color:var(--slate);margin-top:5px;}
+
+  /* ---------- CREDENTIALS ---------- */
+  .creds{margin-top:38px;background:var(--paper-2);border:1px solid var(--line);border-radius:18px;
+    padding:30px 34px;display:flex;flex-wrap:wrap;gap:30px 52px;align-items:center;justify-content:space-between;}
+  .cred-badge{display:flex;align-items:center;gap:11px;color:var(--ink);font-weight:800;font-size:15px;}
+  .cred-badge svg{width:26px;height:26px;stroke:var(--teal-dark);flex:none;}
+  .cred-item .lab{font-size:11px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--slate);}
+  .cred-item .val{font-size:16.5px;font-weight:800;margin-top:5px;letter-spacing:-.2px;}
+
+  /* ---------- QUOTE LINE ---------- */
+  .quote-band{background:var(--paper-3);}
+  .quote .q{max-width:50ch;font-size:clamp(22px,3.2vw,32px);line-height:1.32;font-weight:700;
+    letter-spacing:-.5px;margin-top:16px;}
+  .quote .q span{color:var(--teal-dark);}
+  .quote .by{margin-top:20px;font-size:14px;color:var(--slate);font-weight:700;}
+
+  /* ---------- CONTACT (dark teal) ---------- */
+  .contact{background:var(--teal-deep);color:#fff;}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:start;}
+  @media(max-width:860px){.contact-grid{grid-template-columns:1fr;gap:38px;}}
+  .contact h2{font-size:clamp(28px,4.2vw,42px);letter-spacing:-1.1px;line-height:1.07;font-weight:800;}
+  .contact h2 em{font-style:normal;color:var(--teal-bright);}
+  .contact .sub{margin-top:16px;color:#a9c6d1;font-size:16.5px;max-width:42ch;}
+  .contact-lines{margin-top:30px;display:flex;flex-direction:column;gap:4px;}
+  .cline{display:flex;align-items:center;gap:14px;padding:13px 0;border-bottom:1px solid var(--line-dark);}
+  .cline:last-child{border-bottom:none;}
+  .cline .ci{width:42px;height:42px;border-radius:11px;background:var(--teal-deep-2);flex:none;
+    display:flex;align-items:center;justify-content:center;}
+  .cline .ci svg{width:20px;height:20px;stroke:var(--teal-bright);}
+  .cline small{display:block;font-size:11px;letter-spacing:1.2px;text-transform:uppercase;color:var(--slate-light);font-weight:700;}
+  .cline b{font-size:16.5px;font-weight:700;}
+  .cline a{font-size:16.5px;font-weight:700;}
+  /* form */
+  .qform{background:#fff;border-radius:20px;padding:30px 28px;box-shadow:0 24px 60px rgba(0,0,0,.28);}
+  .qform h3{color:var(--ink);font-size:20px;letter-spacing:-.4px;}
+  .qform p.fh{color:var(--slate);font-size:13.5px;margin-top:5px;margin-bottom:18px;}
+  .frow{display:flex;gap:12px;}
+  @media(max-width:480px){.frow{flex-direction:column;}}
+  .field{margin-bottom:14px;flex:1;}
+  .field label{display:block;font-size:12px;font-weight:800;color:var(--ink-soft);margin-bottom:6px;letter-spacing:.2px;}
+  .field input,.field select,.field textarea{width:100%;border:1.5px solid var(--line);border-radius:10px;
+    padding:12px 13px;font-size:14.5px;font-family:inherit;color:var(--ink);background:var(--paper-2);
+    transition:border-color .15s,background .15s;}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--teal);background:#fff;}
+  .field textarea{resize:vertical;min-height:84px;}
+  .qform button{width:100%;background:var(--teal);color:#fff;font-weight:800;font-size:15.5px;
+    border:none;border-radius:11px;padding:15px;cursor:pointer;transition:background .15s,transform .12s;
+    display:flex;align-items:center;justify-content:center;gap:9px;}
+  .qform button:hover{background:var(--teal-dark);transform:translateY(-1px);}
+  .qform button svg{width:18px;height:18px;stroke:#fff;}
+  .qform .or{text-align:center;font-size:13px;color:var(--slate);margin-top:14px;}
+  .qform .or a{color:var(--teal-dark);font-weight:800;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:#091F26;color:#84a0aa;padding:46px 0 30px;}
+  .foot-in{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:28px;}
+  .foot-brand{display:flex;align-items:center;gap:12px;color:#fff;font-weight:800;font-size:19px;}
+  .foot-meta{font-size:13.5px;line-height:1.95;}
+  .foot-meta b{color:#fff;display:block;margin-bottom:6px;}
+  .foot-meta a:hover{color:#fff;}
+  .foot-fine{margin-top:30px;padding-top:20px;border-top:1px solid #15333d;font-size:12px;color:#5c757e;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+  .foot-fine .built b{color:var(--teal-bright);}
+
+  /* ---------- STICKY MOBILE CALL BAR ---------- */
+  .mobile-call{display:none;position:fixed;left:0;right:0;bottom:0;z-index:80;
+    background:var(--teal);box-shadow:0 -6px 24px rgba(0,0,0,.18);padding:10px 14px;
+    gap:10px;align-items:center;justify-content:space-between;}
+  .mobile-call .mc-t{color:#fff;}
+  .mobile-call .mc-t small{display:block;font-size:10.5px;opacity:.85;font-weight:700;letter-spacing:.4px;}
+  .mobile-call .mc-t b{font-size:17px;font-weight:800;letter-spacing:-.2px;}
+  .mobile-call a.mc-btn{background:#fff;color:var(--teal-dark);font-weight:800;font-size:14.5px;
+    padding:11px 18px;border-radius:9px;display:flex;align-items:center;gap:8px;}
+  .mobile-call a.mc-btn svg{width:16px;height:16px;stroke:var(--teal-dark);}
+  @media(max-width:760px){.mobile-call{display:flex;} body{padding-bottom:66px;}}
+
+  @media print{.mobile-call,nav{position:static;} body{padding-bottom:0;}}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav>
+  <div class="wrap nav-in">
+    <a class="logo" href="#top">
+      <img class="logo-img" src="acland-logo.png" alt="Acland Group logo" width="46" height="46">
+      <span class="txt">Acland Group<small>Tradies making a difference</small></span>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#work">Our work</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+      <a href="tel:1300224225" class="nav-call">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span class="lbl">1300 224 225</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Tradies making a difference</span>
+      <h1>Licensed plumbing &amp; electrical, <em>done properly.</em></h1>
+      <p class="lede">One trusted team across plumbing and electrical — for commercial, strata
+        and residential clients who value work done right and answered fast. Fully licensed,
+        fully insured, and known for turning up when we say we will.</p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-primary">
+          Request a quote
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="tel:1300224225" class="btn btn-outline">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          1300 224 225
+        </a>
+      </div>
+      <div class="avail">
+        <span class="dot"></span>
+        <span><b>Fast response</b> — same-day callbacks on enquiries <em style="color:var(--slate);font-style:normal">[confirm wording]</em></span>
+      </div>
+    </div>
+
+    <!-- HERO PHOTO SLOT -->
+    <!-- DROP IN: a real photo of a uniformed Acland tech on a job (branded teal polo / hi-vis). File e.g. hero-tech.jpg -->
+    <div class="hero-photo">
+      <!-- Hero image: real Acland Facebook photo. ⚠ Confirm with Bryce the pictured tech is current/OK to feature before public launch. -->
+      <img src="photo-oven-job.jpg" alt="Acland Group technician in a branded uniform replacing an oven element in a Western Sydney kitchen">
+      <div class="float-badge">
+        <div class="fb-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6z"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <div><b>Licensed &amp; insured</b><span>Plumbing &amp; electrical</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ SERVICES ============ -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">What we do</span>
+      <h2>Two trades. One accountable team.</h2>
+      <p>Most jobs need more than one trade. Because we self-deliver across plumbing and electrical,
+        you get a single point of contact, tighter coordination, and no finger-pointing between subbies.</p>
+    </div>
+    <div class="grid-2">
+      <div class="svc">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3v6a3 3 0 0 0 3 3h4a3 3 0 0 1 3 3v6"/><path d="M4 3h6"/><path d="M14 18h6"/></svg></div>
+        <h3>Plumbing &amp; Gas</h3>
+        <p>From maintenance and fit-outs to drainage, hot water and gas — compliant work backed by
+          certification, for buildings that can't afford downtime.</p>
+        <ul><li>Maintenance &amp; service</li><li>Drainage</li><li>Gasfitting</li><li>Hot water</li><li>Fit-outs</li></ul>
+      </div>
+      <div class="svc">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div>
+        <h3>Electrical</h3>
+        <p>Licensed electrical for commercial and residential sites — installs, upgrades, fault-finding
+          and compliance, delivered by a lead-certified team.</p>
+        <ul><li>Installs &amp; upgrades</li><li>Fault-finding</li><li>Switchboards</li><li>Compliance</li><li>Maintenance</li></ul>
+      </div>
+      <div class="svc">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4 8 4v14"/><path d="M9 21v-6h6v6"/></svg></div>
+        <h3>Maintenance contracts</h3>
+        <p>Ongoing planned and reactive maintenance for facilities and strata — one reliable team
+          across both trades, on call when something goes wrong.</p>
+        <ul><li>Planned maintenance</li><li>Reactive call-outs</li><li>Multi-site</li><li>Reporting</li></ul>
+      </div>
+      <div class="svc">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="M4 20V8l8-5 8 5v12"/><path d="M9 12h6M9 16h6"/></svg></div>
+        <h3>Commercial &amp; project work</h3>
+        <p>Fit-outs, upgrades and project delivery for commercial and industrial sites — documented,
+          compliant, and delivered to spec from small works to major jobs.</p>
+        <ul><li>Fit-outs</li><li>Upgrades</li><li>Project delivery</li><li>Compliance docs</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY (dark band) ============ -->
+<section class="band" id="why">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Why Acland</span>
+      <h2>Clients stay for the service, not the lowest price.</h2>
+      <p>Waverley Council chose us over cheaper bids — because responsiveness and clear communication
+        matter more than a few dollars on a quote. That's the standard on every job.</p>
+    </div>
+    <div class="grid-3">
+      <div class="why"><div class="n">01</div><h4>We answer fast</h4>
+        <p>The thing clients notice first: we pick up, we reply, and we show up when we say we will.
+          Responsiveness is our edge — and it's deliberate.</p></div>
+      <div class="why"><div class="n">02</div><h4>Two trades, one team</h4>
+        <p>Self-delivering plumbing and electrical means tighter coordination, fewer handovers, and a
+          single team accountable for the whole job.</p></div>
+      <div class="why"><div class="n">03</div><h4>Tradies making a difference</h4>
+        <p>We back our people with steady, quality work — so the crew on your site is experienced,
+          looked after, and takes genuine pride in getting it right.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJECT GALLERY ============ -->
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Our work</span>
+      <h2>Real jobs, across Western Sydney.</h2>
+      <p>From residential oven repairs to commercial fit-outs — we post our latest jobs as we go.
+        See more of our work and reviews over on Facebook.</p>
+    </div>
+    <div class="work-cta">
+      <div class="work-chips">
+        <span>Oven &amp; appliance repairs</span>
+        <span>Switchboard upgrades</span>
+        <span>Drainage &amp; hot water</span>
+        <span>Commercial fit-outs</span>
+        <span>Strata maintenance</span>
+      </div>
+      <a href="https://www.facebook.com/aclandgroup" target="_blank" rel="noopener" class="btn btn-primary">
+        See our latest work on Facebook
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+    <!-- GALLERY: when Bryce supplies more real job photos, restore a photo grid here.
+         The one available photo (photo-oven-job.jpg) is currently used as the hero image. -->
+  </div>
+</section>
+
+<!-- ============ REVIEWS + TESTIMONIALS ============ -->
+<section id="reviews" style="background:var(--paper-2);">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">What clients say</span>
+      <h2>Trusted by the people we work for.</h2>
+      <p>Real reviews from real clients. Paste your best Google / Facebook reviews into the slots below.</p>
+    </div>
+
+    <div class="tgrid">
+      <!-- Replace each card with a real, named review from Google/Facebook -->
+      <div class="tcard">
+        <div class="qmark">&ldquo;</div>
+        <p>Very happy! Had two of the boys come out to fix a few things around the house. They were very polite and did a great job with the items I needed fixing — even gave me a few tips on a few other things around the house.</p>
+        <div class="who"><div class="av">S</div><div><b>Sandy Thompson</b><span>Residential · Facebook</span></div></div>
+      </div>
+      <div class="tcard">
+        <div class="qmark">&ldquo;</div>
+        <p>Fantastic service, great work today and in the past. Nathan and Bryce are great and I will recommend them to anyone. Thanks again guys.</p>
+        <div class="who"><div class="av">D</div><div><b>David Horan</b><span>Repeat client · Facebook</span></div></div>
+      </div>
+      <div class="tcard">
+        <div class="qmark">&ldquo;</div>
+        <p>Thanks for repairing our plumbing issues. Great customer service — you were both efficient and knowledgeable. Thanks guys!</p>
+        <div class="who"><div class="av">J</div><div><b>Jess Vujcich</b><span>Plumbing · Facebook</span></div></div>
+      </div>
+    </div>
+
+    <!-- REVIEW RATING STRIP — intentionally omitted until fresh reviews are gathered.
+         The 3 reviews above are genuine but a "X.X from N reviews" claim implies a current,
+         active review volume we can't back yet. Re-add this strip once fresh reviews land. -->
+    <p style="text-align:center;margin-top:34px;font-size:14px;color:var(--slate);">
+      Read more reviews on our
+      <a href="https://www.facebook.com/aclandgroup" target="_blank" rel="noopener" style="color:var(--teal-dark);font-weight:800;">Facebook page →</a>
+    </p>
+  </div>
+</section>
+
+<!-- ============ SECTORS + CREDENTIALS ============ -->
+<section id="sectors">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Who we serve</span>
+      <h2>Across commercial, strata and residential.</h2>
+    </div>
+    <div class="sectors">
+      <div class="sector">
+        <svg class="s-ic" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v16"/><path d="M19 21V11l-4-2"/><path d="M9 7h2M9 11h2M9 15h2"/></svg>
+        <b>Commercial</b><span>Offices, retail, hospitality</span>
+      </div>
+      <div class="sector">
+        <svg class="s-ic" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="M4 20V9l5-3 5 3v11"/><path d="M14 20v-7l6-3v10"/></svg>
+        <b>Industrial</b><span>Facilities &amp; sites</span>
+      </div>
+      <div class="sector">
+        <svg class="s-ic" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        <b>Strata</b><span>Multi-site maintenance</span>
+      </div>
+      <div class="sector">
+        <svg class="s-ic" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>
+        <b>Residential</b><span>Quality work for homeowners</span>
+      </div>
+    </div>
+
+    <div class="creds">
+      <div class="cred-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6z"/><path d="m9 12 2 2 4-4"/></svg>
+        Fully licensed &amp; insured
+      </div>
+      <div class="cred-item"><span class="lab">NSW Contractor Licence</span><span class="val">188519C</span></div>
+      <div class="cred-item"><span class="lab">Licence current to</span><span class="val">2026</span></div>
+      <div class="cred-item"><span class="lab">Operating since</span><span class="val">2006</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUOTE LINE ============ -->
+<section class="quote-band">
+  <div class="wrap quote">
+    <span class="kicker">In short</span>
+    <p class="q">We're not the cheapest — we're the team that <span>turns up, communicates, and
+      gets it right the first time.</span></p>
+    <p class="by">— The Acland Group standard</p>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <span class="kicker" style="color:var(--teal-bright)">Get in touch</span>
+      <h2 style="margin-top:13px;">Need it done <em>properly?</em><br>Let's talk.</h2>
+      <p class="sub">Tell us about the job — plumbing, electrical, maintenance or a project.
+        We'll get back to you fast, because that's the whole point.</p>
+      <div class="contact-lines">
+        <a class="cline" href="tel:1300224225">
+          <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          <span><small>Call us</small><b>1300 224 225</b></span>
+        </a>
+        <a class="cline" href="mailto:info@aclandgroup.com.au">
+          <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span>
+          <span><small>Email</small><b>info@aclandgroup.com.au</b></span>
+        </a>
+        <div class="cline">
+          <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <span><small>Find us</small><b>432 Rooty Hill North Rd, Oakhurst NSW 2761</b></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- QUOTE FORM -->
+    <!-- WIRE UP: set form action to an email/Formspree endpoint (e.g. https://formspree.io/f/xxxx) to receive submissions. -->
+    <form class="qform" action="#" method="post" onsubmit="alert('Demo form — connect a form handler (e.g. Formspree) to go live.');return false;">
+      <h3>Request a quote</h3>
+      <p class="fh">Send the details and we'll get straight back to you.</p>
+      <div class="frow">
+        <div class="field"><label for="name">Name</label><input id="name" name="name" type="text" placeholder="Your name" required></div>
+        <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" placeholder="Mobile number" required></div>
+      </div>
+      <div class="frow">
+        <div class="field"><label for="suburb">Suburb</label><input id="suburb" name="suburb" type="text" placeholder="Job location" required></div>
+        <div class="field"><label for="jobtype">Job type</label>
+          <select id="jobtype" name="jobtype">
+            <option value="" disabled selected>Select…</option>
+            <option>Plumbing &amp; gas</option>
+            <option>Electrical</option>
+            <option>Maintenance contract</option>
+            <option>Commercial / project</option>
+            <option>Not sure — need advice</option>
+          </select>
+        </div>
+      </div>
+      <div class="field"><label for="msg">What do you need?</label><textarea id="msg" name="message" placeholder="Tell us about the job…"></textarea></div>
+      <button type="submit">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></svg>
+        Send enquiry
+      </button>
+      <p class="or">or call us now on <a href="tel:1300224225">1300 224 225</a></p>
+    </form>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-in">
+      <div>
+        <div class="foot-brand">
+          <img class="logo-img on-dark" src="acland-logo.png" alt="Acland Group logo" width="40" height="40">
+          Acland Group
+        </div>
+        <p style="margin-top:12px;max-width:32ch;font-size:13.5px;">Licensed plumbing &amp; electrical
+          contractors serving Western Sydney. <em style="font-style:normal;color:#cfe0e6;">Tradies making a difference.</em></p>
+      </div>
+      <div class="foot-meta">
+        <b>Services</b>
+        Plumbing &amp; Gas<br>Electrical<br>Maintenance contracts<br>Commercial &amp; project work
+      </div>
+      <div class="foot-meta">
+        <b>Contact</b>
+        <a href="tel:1300224225">1300 224 225</a><br>
+        <a href="mailto:info@aclandgroup.com.au">info@aclandgroup.com.au</a><br>
+        432 Rooty Hill North Rd,<br>Oakhurst NSW 2761<br>
+        <a href="https://www.facebook.com/aclandgroup" target="_blank" rel="noopener">facebook.com/aclandgroup</a>
+      </div>
+    </div>
+    <div class="foot-fine">
+      <span>© 2026 Acland Group Pty Ltd · NSW Contractor Licence 188519C · Fully licensed &amp; insured</span>
+      <span class="built">Site by <b>NiuWay</b> · Build · Teach · Automate</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ STICKY MOBILE CALL BAR ============ -->
+<div class="mobile-call">
+  <div class="mc-t"><small>Fast response · Western Sydney</small><b>1300 224 225</b></div>
+  <a class="mc-btn" href="tel:1300224225">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Call now
+  </a>
+</div>
+
+</body>
+</html>
